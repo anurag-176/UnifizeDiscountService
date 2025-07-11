@@ -23,12 +23,13 @@ public class DiscountPolicy implements Serializable {
     private int value;                                 // Discount value (e.g. 1000)
     private DiscountType type;                         // CURRENCY, PERCENTAGE
 
-    private boolean isApplyToAll;                      // Apply to all matching items?
-    private Integer applicationCount;                  // Limit on how many items to apply to
+    private boolean isApplyToAll;                       // Apply to all matching items?
+    private Integer applicationCount;                   // Limit on how many items to apply to
 
-    private Integer maximumDiscountAmount;             // Cap for percentage discount
-    private String voucherCode;                        // Optional voucher trigger
-    private DiscountTargetStrategy targetStrategy;     // MIN_PRICE, FIRST_MATCH, etc.
+    private Integer maximumDiscountAmount;              // Cap for percentage discount
+    private String voucherCode;                         // Optional voucher trigger
+    private DiscountTargetStrategy targetStrategy;      // MIN_PRICE, FIRST_MATCH, etc.
 
-    private String conditionExpression; // ✅ New: expression as a String
+    private String conditionExpression;                 // expression as a String
+    private Integer stackOrder;                         // Lower number = higher priority
 }
