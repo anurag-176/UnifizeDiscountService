@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class DiscountPolicy implements Serializable {
     @Id
     private String id;
-    private String tagline;
+    private String name;
 
     private DiscountScope scope;                       // CART_ITEM, PRODUCT, etc.
     private int value;                                 // Discount value (e.g. 1000)

@@ -27,4 +27,24 @@
 
 ---
 
+Follow these steps to install and start the Redis server on macOS:
+
+1. **Install Homebrew** (if not already installed):
+
+    ```bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+2. **Install Redis via Homebrew**:
+
+    ```bash
+    brew install redis
+    ```
+
+3. **Start Redis Server**:
+
+    ```bash
+    redis-server
+    ```
+
 For more details (test execution, API usage, etc.), see further sections or contact the maintainer.
