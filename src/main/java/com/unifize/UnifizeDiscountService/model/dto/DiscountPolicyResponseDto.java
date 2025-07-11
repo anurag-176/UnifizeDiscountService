@@ -2,7 +2,7 @@ package com.unifize.UnifizeDiscountService.model.dto;
 
 import com.unifize.UnifizeDiscountService.model.DiscountPolicy;
 import com.unifize.UnifizeDiscountService.model.DiscountScope;
-import com.unifize.UnifizeDiscountService.model.DiscountTargetStrategy;
+import com.unifize.UnifizeDiscountService.model.DiscountTargetStrategyEnum;
 import com.unifize.UnifizeDiscountService.model.DiscountType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,7 +25,7 @@ public class DiscountPolicyResponseDto {
     private Integer applicationCount;
     private Integer maximumDiscountAmount;
     private String voucherCode;
-    private DiscountTargetStrategy targetStrategy;
+    private DiscountTargetStrategyEnum targetStrategy;
     private Integer stackOrder;
 
     public static DiscountPolicyResponseDto from(DiscountPolicy policy) {

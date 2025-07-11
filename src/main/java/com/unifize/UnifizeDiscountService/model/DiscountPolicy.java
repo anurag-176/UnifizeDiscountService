@@ -28,7 +28,7 @@ public class DiscountPolicy implements Serializable {
 
     private Integer maximumDiscountAmount;              // Cap for percentage discount
     private String voucherCode;                         // Optional voucher trigger
-    private DiscountTargetStrategy targetStrategy;      // MIN_PRICE, FIRST_MATCH, etc.
+    private DiscountTargetStrategyEnum targetStrategy;      // MIN_PRICE, FIRST_MATCH, etc.
 
     private String conditionExpression;                 // expression as a String
     private Integer stackOrder;                         // Lower number = higher priority

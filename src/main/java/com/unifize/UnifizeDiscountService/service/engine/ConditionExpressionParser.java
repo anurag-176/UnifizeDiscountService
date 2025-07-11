@@ -1,7 +1,7 @@
 package com.unifize.UnifizeDiscountService.service.engine;
 
-import com.unifize.UnifizeDiscountService.model.ComparatorType;
-import com.unifize.UnifizeDiscountService.model.ConditionNode;
+import com.unifize.UnifizeDiscountService.model.engine.ComparatorType;
+import com.unifize.UnifizeDiscountService.model.engine.ConditionNode;
 import java.util.*;
 import java.util.regex.Pattern;
 

@@ -2,7 +2,7 @@ package com.unifize.UnifizeDiscountService.model.dto;
 
 import com.unifize.UnifizeDiscountService.model.DiscountPolicy;
 import com.unifize.UnifizeDiscountService.model.DiscountScope;
-import com.unifize.UnifizeDiscountService.model.DiscountTargetStrategy;
+import com.unifize.UnifizeDiscountService.model.DiscountTargetStrategyEnum;
 import com.unifize.UnifizeDiscountService.model.DiscountType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -41,7 +41,7 @@ public class DiscountPolicyRequestDto {
     private String voucherCode;
 
     @NotNull
-    private DiscountTargetStrategy targetStrategy;
+    private DiscountTargetStrategyEnum targetStrategy;
 
     @NotNull
     private Integer stackOrder;
