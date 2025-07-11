@@ -30,5 +30,5 @@ public class DiscountPolicy implements Serializable {
     private String voucherCode;                        // Optional voucher trigger
     private DiscountTargetStrategy targetStrategy;     // MIN_PRICE, FIRST_MATCH, etc.
 
-    private DiscountConditionNode condition;           // Compound/simple condition tree
+    private String conditionExpression; // ✅ New: expression as a String
 }
