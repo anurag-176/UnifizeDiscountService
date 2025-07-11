@@ -1,5 +1,5 @@
 package com.unifize.UnifizeDiscountService.model;
 
 public enum ComparatorType {
-    EQUALS, GT, GTE, LT, LTE
+    EQUALS, GT, GTE, LT, LTE, AND, OR
 }
