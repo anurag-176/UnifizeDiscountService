@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: UnifizeDiscountService
+server:
+  port: 80 
