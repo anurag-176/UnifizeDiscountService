@@ -11,7 +11,7 @@ public class MinPriceStrategy implements DiscountTargetStrategy {
     @Override
     public List<CartItem> apply(List<CartItem> items) {
         return items.stream()
-                .min(Comparator.comparing(CartItem::getPrice))
+                .min(Comparator.comparing(item -> item.getProduct().getBasePrice()))
                 .map(List::of)
                 .orElse(List.of());
     }
