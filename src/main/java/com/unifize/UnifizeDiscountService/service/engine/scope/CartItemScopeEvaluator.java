@@ -24,10 +24,10 @@ import java.util.Optional;
 public class CartItemScopeEvaluator implements ScopeEvaluator {
 
     @Autowired
-    private DiscountTargetStrategyFactory discountTargetStrategyFactory;
+    public DiscountTargetStrategyFactory discountTargetStrategyFactory;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    public ObjectMapper objectMapper;
 
     @Override
     public boolean isDiscountApplicable(
