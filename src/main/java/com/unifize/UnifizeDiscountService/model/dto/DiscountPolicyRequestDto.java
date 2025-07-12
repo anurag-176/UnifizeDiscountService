@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Set;
 
 @Data
 @Builder
@@ -45,6 +46,8 @@ public class DiscountPolicyRequestDto {
     @NotNull
     private Integer stackOrder;
 
+    private Set<String> mutuallyExclusiveWith;
+
     public DiscountPolicy toEntity() {
         return DiscountPolicy.builder()
                 .name(this.name)
@@ -58,6 +61,7 @@ public class DiscountPolicyRequestDto {
                 .voucherCode(this.voucherCode)
                 .targetStrategy(this.targetStrategy)
                 .stackOrder(this.stackOrder)
+                .mutuallyExclusiveWith(this.mutuallyExclusiveWith)
                 .build();
     }
 }

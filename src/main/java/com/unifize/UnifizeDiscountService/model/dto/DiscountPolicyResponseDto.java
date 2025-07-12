@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,6 +29,7 @@ public class DiscountPolicyResponseDto {
     private String voucherCode;
     private DiscountTargetStrategyEnum targetStrategy;
     private Integer stackOrder;
+    private Set<String> mutuallyExclusiveWith;
 
     public static DiscountPolicyResponseDto from(DiscountPolicy policy) {
         return DiscountPolicyResponseDto.builder()
@@ -42,6 +45,7 @@ public class DiscountPolicyResponseDto {
                 .voucherCode(policy.getVoucherCode())
                 .targetStrategy(policy.getTargetStrategy())
                 .stackOrder(policy.getStackOrder())
+                .mutuallyExclusiveWith(policy.getMutuallyExclusiveWith())
                 .build();
     }
 }

@@ -41,6 +41,7 @@ public class DiscountServiceImpl implements DiscountService {
                 .originalPrice(originalTotal)
                 .finalPrice(originalTotal)
                 .appliedDiscounts(new LinkedHashMap<>()) // maintain order
+                .appliedDiscountIdSet(new HashSet<>())
                 .message("Discounts calculated")
                 .build();
 
@@ -52,6 +53,12 @@ public class DiscountServiceImpl implements DiscountService {
 
         for (DiscountPolicy policy : policies) {
             try {
+                if (policy.getMutuallyExclusiveWith() != null &&
+                        !Collections.disjoint(discountedPrice.getAppliedDiscountIdSet(), policy.getMutuallyExclusiveWith())) {
+                    continue; // skip policy
+                }
+
+
                 ScopeEvaluator evaluator = scopeEvaluatorFactory.getEvaluator(policy.getScope());
                 boolean applicable = evaluator.isDiscountApplicable(
                         cartItems, customer, paymentInfo, discountedPrice, policy, null

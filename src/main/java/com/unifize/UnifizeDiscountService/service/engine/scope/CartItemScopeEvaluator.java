@@ -119,7 +119,7 @@ public class CartItemScopeEvaluator implements ScopeEvaluator {
 
             discountedPrice.setFinalPrice(discountedPrice.getFinalPrice().subtract(totalDiscount));
             discountedPrice.getAppliedDiscounts().put(policy.getName(), totalDiscount);
-
+            discountedPrice.getAppliedDiscountIdSet().add(policy.getId());
             return discountedPrice;
 
         } catch (Exception e) {

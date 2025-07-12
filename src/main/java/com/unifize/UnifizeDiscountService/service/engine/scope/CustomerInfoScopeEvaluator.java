@@ -67,7 +67,7 @@ public class CustomerInfoScopeEvaluator implements ScopeEvaluator {
             BigDecimal after = before.subtract(discount).max(BigDecimal.ZERO);
             discountedPrice.setFinalPrice(after);
             discountedPrice.getAppliedDiscounts().put(policy.getName(), discount);
-
+            discountedPrice.getAppliedDiscountIdSet().add(policy.getId());
             return discountedPrice;
 
         } catch (Exception e) {

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -16,5 +18,6 @@ public class DiscountedPrice {
    private BigDecimal originalPrice;
    private BigDecimal finalPrice;
    private Map<String, BigDecimal> appliedDiscounts; // discount_name -> amount
+   private Set<String> appliedDiscountIdSet;
    private String message;
 } 

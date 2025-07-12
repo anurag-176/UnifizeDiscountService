@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
-
 import java.io.Serializable;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -35,4 +35,7 @@ public class DiscountPolicy implements Serializable {
 
     private String conditionExpression;                 // expression as a String
     private Integer stackOrder;                         // Lower number = higher priority
+
+    @Indexed
+    private Set<String> mutuallyExclusiveWith;
 }

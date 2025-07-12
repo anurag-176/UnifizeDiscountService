@@ -67,7 +67,7 @@ public class FinalSumScopeEvaluator implements ScopeEvaluator {
             BigDecimal finalAfter = finalBefore.subtract(discount).max(BigDecimal.ZERO);
             discountedPrice.setFinalPrice(finalAfter);
             discountedPrice.getAppliedDiscounts().put(policy.getName(), discount);
-
+            discountedPrice.getAppliedDiscountIdSet().add(policy.getId());
             return discountedPrice;
 
         } catch (Exception e) {
