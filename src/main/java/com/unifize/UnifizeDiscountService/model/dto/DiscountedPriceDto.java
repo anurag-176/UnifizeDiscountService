@@ -1,13 +1,18 @@
 package com.unifize.UnifizeDiscountService.model.dto;
 
 import com.unifize.UnifizeDiscountService.model.DiscountedPrice;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.util.Map;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class DiscountedPriceDto {
     private BigDecimal originalPrice;
     private BigDecimal finalPrice;

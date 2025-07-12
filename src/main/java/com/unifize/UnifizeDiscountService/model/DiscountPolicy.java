@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import java.io.Serializable;
 
@@ -27,6 +28,8 @@ public class DiscountPolicy implements Serializable {
     private Integer applicationCount;                   // Limit on how many items to apply to
 
     private Integer maximumDiscountAmount;              // Cap for percentage discount
+
+    @Indexed
     private String voucherCode;                         // Optional voucher trigger
     private DiscountTargetStrategyEnum targetStrategy;      // MIN_PRICE, FIRST_MATCH, etc.
 

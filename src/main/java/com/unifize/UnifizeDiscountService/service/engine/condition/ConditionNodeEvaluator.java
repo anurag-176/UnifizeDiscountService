@@ -36,13 +36,10 @@ public class ConditionNodeEvaluator {
         Object current = context.get(parts[0]);
 
         for (int i = 1; i < parts.length && current != null; i++) {
-            try {
-                Field field = current.getClass().getDeclaredField(parts[i]);
-                field.setAccessible(true);
-                current = field.get(current);
-            } catch (Exception e) {
+            if (!(current instanceof Map<?, ?>)) {
                 return null;
             }
+            current = ((Map<?, ?>) current).get(parts[i]);
         }
         return current;
     }
