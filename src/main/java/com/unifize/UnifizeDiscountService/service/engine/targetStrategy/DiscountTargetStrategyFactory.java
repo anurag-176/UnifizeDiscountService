@@ -1,4 +1,4 @@
-package com.unifize.UnifizeDiscountService.service.engine;
+package com.unifize.UnifizeDiscountService.service.engine.targetStrategy;
 
 import com.unifize.UnifizeDiscountService.model.DiscountTargetStrategyEnum;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import java.util.Map;
 @Component
 public class DiscountTargetStrategyFactory {
 
-    private final Map<DiscountTargetStrategyEnum, DiscountTargetStrategy> strategyMap = new EnumMap<>(DiscountTargetStrategy.class);
+    private final Map<DiscountTargetStrategyEnum, DiscountTargetStrategy> strategyMap = new EnumMap<>(DiscountTargetStrategyEnum.class);
 
     @Autowired
     public DiscountTargetStrategyFactory(

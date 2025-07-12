@@ -1,4 +1,4 @@
-package com.unifize.UnifizeDiscountService.service.engine;
+package com.unifize.UnifizeDiscountService.service.engine.targetStrategy;
 
 import com.unifize.UnifizeDiscountService.model.CartItem;
 import org.springframework.stereotype.Component;

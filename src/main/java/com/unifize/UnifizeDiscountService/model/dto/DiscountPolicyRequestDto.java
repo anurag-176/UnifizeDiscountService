@@ -29,7 +29,6 @@ public class DiscountPolicyRequestDto {
     @NotNull
     private DiscountType type;
 
-    @NotNull
     private String conditionExpression;
 
     private boolean isApplyToAll;

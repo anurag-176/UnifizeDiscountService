@@ -1,4 +1,4 @@
-package com.unifize.UnifizeDiscountService.service.engine;
+package com.unifize.UnifizeDiscountService.service.engine.condition;
 
 import com.unifize.UnifizeDiscountService.model.engine.ComparatorType;
 import com.unifize.UnifizeDiscountService.model.engine.ConditionNode;
