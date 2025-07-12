@@ -60,13 +60,11 @@ public class CartItemScopeEvaluator implements ScopeEvaluator {
                 return ConditionNodeEvaluator.evaluate(conditionNode, context);
             });
 
-//            if (!anyMatch) {
-//                throw new DiscountValidationException("No cart items matched condition for discount: " + policy.getName());
-//            }
-//
-//            return true;
+            if (!anyMatch) {
+                throw new DiscountValidationException("No cart items matched condition for discount: " + policy.getName());
+            }
 
-            return anyMatch;
+            return true;
 
         } catch (Exception e) {
             throw new DiscountValidationException("Failed to validate CART_ITEM condition: " + e.getMessage());

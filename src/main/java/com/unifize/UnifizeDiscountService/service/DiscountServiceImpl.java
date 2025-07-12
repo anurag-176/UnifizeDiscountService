@@ -6,6 +6,7 @@ import com.unifize.UnifizeDiscountService.repository.DiscountPolicyRepository;
 import com.unifize.UnifizeDiscountService.service.engine.scope.ScopeEvaluator;
 import com.unifize.UnifizeDiscountService.service.engine.scope.ScopeEvaluatorFactory;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class DiscountServiceImpl implements DiscountService {
@@ -61,7 +63,7 @@ public class DiscountServiceImpl implements DiscountService {
                 }
             } catch (DiscountValidationException | DiscountCalculationException e) {
                 // Log and skip to next policy
-                // logger.warn("Skipping policy {}: {}", policy.getName(), e.getMessage());
+                 log.warn("Skipping policy {}: {}", policy.getName(), e.getMessage());
             }
         }
 
