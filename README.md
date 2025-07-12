@@ -66,6 +66,13 @@ Follow these steps to install and start the Redis server on macOS:
    ```
 ---
 
+## Postman Collection (APIs)
+All APIs with examples for tests and beyond in one place.
+```
+https://drive.google.com/file/d/1286MWGeNra1uWdxIQ8kQUjsVuFsRfNlf/view?usp=sharing
+```
+---
+
 ## ✅ Features
 
 1. **Multi-Scope Discount Support**  
@@ -138,7 +145,18 @@ Follow these steps to install and start the Redis server on macOS:
     • Framework ready for end-to-end tests using `@SpringBootTest` and `MockMvc`.
 
 
-## Data flow chart
+## Data flow chart 
+Each box here also depicts the scope of modularity for the system to change.
+
+**ScopeEvaluator**: What things to put condition upon. Example, CartItem, Product, CustomerInfo, PaymentDetails.
+
+**Condition Expression**: Instead of complicated DDLs, a simple string is parsed into a tree to evaluate conditions.
+
+**Discount Target Strategy**: Pre filter / treat the CarItem(s) after applying expression (if applicable)
+
+**VoucherCode**: Its applicable in all policies if present.
+
+
 
 
 
