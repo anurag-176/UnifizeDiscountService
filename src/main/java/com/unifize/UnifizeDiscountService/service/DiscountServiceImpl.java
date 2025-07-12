@@ -93,12 +93,4 @@ public class DiscountServiceImpl implements DiscountService {
                 policy, code
         );
     }
-
-    // since DiscountPolicy Entity is not using JPA
-    public Optional<DiscountPolicy> findByVoucherCode(String code) {
-        return StreamSupport
-                .stream(discountPolicyRepository.findAll().spliterator(), false)
-                .filter(p -> code.equalsIgnoreCase(p.getVoucherCode()))
-                .findFirst();
-    }
 } 
