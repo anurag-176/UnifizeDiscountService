@@ -67,10 +67,24 @@ Follow these steps to install and start the Redis server on macOS:
 ---
 
 ## Postman Collection (APIs)
-All APIs with examples for tests and beyond in one place.
+All APIs with examples for tests, documentation and beyond in one place.
 ```
 https://drive.google.com/file/d/1286MWGeNra1uWdxIQ8kQUjsVuFsRfNlf/view?usp=sharing
 ```
+---
+
+## Usage
+
+1. To start applying the policies. One must create the first.
+All postman examples are already in place under ```create-discount-policies-API```. All one has to do is simply run them.
+
+2. Next to test the implemented APIs, run any example you like or modify them.
+These will be available under ```calculate-discount-API```
+
+3. You can make your own policies too even one with compound ones. Check examples under ```create-discount-policies-API``` named as ```* (Compound condition)```
+
+**System behaviour modularity are discussed below along with Data flow chart**
+
 ---
 
 ## ✅ Features
@@ -81,7 +95,7 @@ https://drive.google.com/file/d/1286MWGeNra1uWdxIQ8kQUjsVuFsRfNlf/view?usp=shari
    &nbsp;&nbsp;&nbsp;&nbsp;• `CUSTOMER_INFO` — Discount based on customer profile (e.g., tier)
 
 
-2.a. **Condition-Based Discount Application**  
+2. **a. Condition-Based Discount Application**  
    • Discounts are conditionally applied using expression-based rules.  
    • Supports expressions like:  
    &nbsp;&nbsp;&nbsp;&nbsp;• `$product.brand == "PUMA"`  
@@ -89,10 +103,12 @@ https://drive.google.com/file/d/1286MWGeNra1uWdxIQ8kQUjsVuFsRfNlf/view?usp=shari
    &nbsp;&nbsp;&nbsp;&nbsp;• `$tier == "GOLD"`  
    &nbsp;&nbsp;&nbsp;&nbsp;• `$bankName == "ICICI"`
 
-2.b. **Compound Conditional queries**  
+
+2. **b. Compound Conditional queries**  
    • Discounts are conditionally applied using expression-based rules.  
    • Supports expressions like:  
    &nbsp;&nbsp;&nbsp;&nbsp;• `"$product.brandTier == \"PREMIUM\" && ($product.category == \"T-Shirt\" || $product.category == \"Jacket\")",`
+
 
 3. **Percentage and Fixed Value Discounts**  
    • Discount types:  
@@ -148,13 +164,13 @@ https://drive.google.com/file/d/1286MWGeNra1uWdxIQ8kQUjsVuFsRfNlf/view?usp=shari
 ## Data flow chart 
 Each box here also depicts the scope of modularity for the system to change.
 
-**ScopeEvaluator**: What things to put condition upon. Example, CartItem, Product, CustomerInfo, PaymentDetails.
+1. **ScopeEvaluator**: What things to put condition upon. Example, CartItem, Product, CustomerInfo, PaymentDetails.
 
-**Condition Expression**: Instead of complicated DDLs, a simple string is parsed into a tree to evaluate conditions.
+2. **Condition Expression**: Instead of complicated DDLs, a simple string is parsed into a tree to evaluate conditions.
 
-**Discount Target Strategy**: Pre filter / treat the CarItem(s) after applying expression (if applicable)
+3. **Discount Target Strategy**: Pre filter / treat the CarItem(s) after applying expression (if applicable)
 
-**VoucherCode**: Its applicable in all policies if present.
+4. **VoucherCode**: Its applicable in all policies if present.
 
 
 
@@ -175,13 +191,15 @@ Each box here also depicts the scope of modularity for the system to change.
                ┌──────────────────────────────┐   ┌────────────────────────────┐
                │ DiscountPolicyRepository     │   │ ScopeEvaluatorFactory      │
                │ (fetches all discount rules) │   │ (returns evaluator by scope│
-               └──────────────────────────────┘   └──────────────┬─────────────┘
-                                                                  │
-                                                                  ▼
+               └──────────────────────────────┘   └────────────────┬───────────┘
+                                                                   │
+                                                                   ▼
                                           ┌─────────────────────────────────────┐
                                           │         ScopeEvaluator (interface)  │
-                                          │         ├── CartItemScopeEvaluator  │
-                                          │         └── CustomerInfoEvaluator   │
+                                          │         ├── CartItem                │
+                                          │         ├── PaymentInfo             │
+                                          │         ├── FinalSum                │
+                                          │         └── CustomerInfo            │
                                           └────────────────────┬────────────────┘
                                                                ▼
                                          ┌────────────────────────────────────┐
