@@ -1,11 +1,13 @@
 package com.unifize.UnifizeDiscountService.controller;
 
+import com.unifize.UnifizeDiscountService.exception.DiscountValidationException;
 import com.unifize.UnifizeDiscountService.model.DiscountPolicy;
 import com.unifize.UnifizeDiscountService.model.dto.DiscountPolicyRequestDto;
 import com.unifize.UnifizeDiscountService.model.dto.DiscountPolicyResponseDto;
 import com.unifize.UnifizeDiscountService.service.DiscountPolicyService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

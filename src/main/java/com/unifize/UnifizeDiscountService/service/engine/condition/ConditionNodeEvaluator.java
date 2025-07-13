@@ -1,31 +1,34 @@
 package com.unifize.UnifizeDiscountService.service.engine.condition;
 
+import com.unifize.UnifizeDiscountService.exception.DiscountCalculationException;
 import com.unifize.UnifizeDiscountService.model.engine.ComparatorType;
+import com.unifize.UnifizeDiscountService.model.engine.CompoundConditionNode;
 import com.unifize.UnifizeDiscountService.model.engine.ConditionNode;
-import java.lang.reflect.Field;
+import com.unifize.UnifizeDiscountService.model.engine.SimpleConditionNode;
 import java.util.Map;
 
 public class ConditionNodeEvaluator {
 
     public static boolean evaluate(ConditionNode node, Map<String, Object> context) {
-        if (node == null || node.operator == null) return true;
+        if (node == null) return true;
 
-        // Evaluate compound subtrees recursively
-        if (node.isCompound()) {
-            boolean left = evaluate((ConditionNode) node.lhs, context);
-            boolean right = evaluate((ConditionNode) node.rhs, context);
-            return switch (node.operator) {
+        if (node instanceof CompoundConditionNode compound) {
+            boolean left = evaluate(compound.lhs, context);
+            boolean right = evaluate(compound.rhs, context);
+            return switch (compound.operator) {
                 case AND -> left && right;
                 case OR -> left || right;
-                default -> throw new RuntimeException("Invalid compound operator: " + node.operator);
+                default -> throw new DiscountCalculationException("Invalid compound operator: " + compound.operator);
             };
         }
 
-        // Resolve LHS and RHS values
-        Object lhsValue = resolveOperand(node.lhs, context);
-        Object rhsValue = node.rhs;
+        if (node instanceof SimpleConditionNode simple) {
+            Object lhsValue = resolveOperand(simple.lhs, context);
+            Object rhsValue = simple.rhs;
+            return compare(lhsValue, rhsValue, simple.operator);
+        }
 
-        return compare(lhsValue, rhsValue, node.operator);
+        throw new DiscountCalculationException("Unknown node type: " + node.getClass());
     }
 
     private static Object resolveOperand(Object operand, Map<String, Object> context) {

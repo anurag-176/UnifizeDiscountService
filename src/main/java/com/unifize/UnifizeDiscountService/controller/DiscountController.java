@@ -32,14 +32,7 @@ public class DiscountController {
     public ResponseEntity<DiscountValidationResponseDto> validateDiscountCode(
             @RequestParam String code,
             @RequestBody DiscountRequestDto request) {
-
-        try {
-            boolean valid = discountService.validateDiscountCode(code, request.getCartItems(), request.getCustomer());
-            return ResponseEntity.ok(new DiscountValidationResponseDto(valid, "Discount code is valid."));
-        } catch (DiscountValidationException e) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new DiscountValidationResponseDto(false, e.getMessage()));
-        }
+        boolean valid = discountService.validateDiscountCode(code, request.getCartItems(), request.getCustomer());
+        return ResponseEntity.ok(new DiscountValidationResponseDto(valid, "Discount code is valid."));
     }
 }

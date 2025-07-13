@@ -31,6 +31,8 @@ public class DiscountPolicyResponseDto {
     private Integer stackOrder;
     private Set<String> mutuallyExclusiveWith;
 
+    private String message;
+
     public static DiscountPolicyResponseDto from(DiscountPolicy policy) {
         return DiscountPolicyResponseDto.builder()
                 .id(policy.getId())
